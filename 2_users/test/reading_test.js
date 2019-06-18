@@ -7,11 +7,15 @@ describe('Reading users out of the database', () => {
 
     beforeEach((done) => {
         joe = new User({ name: 'Joe' });
-        job.save()
+        joe.save()
             .then(() => done());
     });
 
-    it('finds all users with a name of joe', () => {
-        joe // instance of a User
+    it('finds all users with a name of joe', (done) => {
+        User.find({ name: 'Joe' })
+         .then((users) => {
+            console.log(users);
+            done();
+         })
     }); 
 });
